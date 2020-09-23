@@ -1,0 +1,41 @@
+body{
+  margin:0;
+}
+.container{
+  width:1200px;
+  margin:auto;
+  background-color:navy;
+  color:white;
+  padding:5px;
+  min-height:100vh;
+  text-align:center;
+}
+.container div::selection, .container div h1::selection, .container div h3::selection, .container div p::selection{
+  background-color:indianred !important;
+}
+.startQuiz{
+  margin:10px 0;
+  border:0;
+  background-color:beige;
+  border-radius:10px;
+  cursor:pointer;
+  width:150px;
+  height:30px;
+  transition: all .2s linear;
+  font-weight: 600;
+}
+.startQuiz:hover{
+  transform:scale(1.05);
+  color:indianred;
+}
+.time-seconds{
+  background-color:navy;
+  filter:grayscale(0.5);
+  color:white;
+  border-color:white;
+  width:50px;
+}
+.highscoreParagraph{
+  margin: 0;
+  display: inline;
+}
