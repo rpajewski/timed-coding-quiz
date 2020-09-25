@@ -1,0 +1,53 @@
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    margin: 0 20px 0 20px;
+}
+
+.title {
+    text-align: center;
+    color: black;
+}
+
+.answer {
+    display: flex;
+    justify-content: left;
+    background-color: purple;
+    color: white;
+    border-radius: 15px;
+    padding: 15px;
+    width: 150px;
+    height: 20px;
+    margin: 5px 0 5px 0;
+
+}
+
+.answer:hover {
+    background-color: plum;
+}
+
+#button-answer {
+    display: flex;
+    justify-content: center;
+}
+
+.start-button {
+    background-color: purple;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 15px;
+    width: 100px;
+    height: 20px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+
+.start-button:hover {
+    background-color: plum;
+    border-radius: 15px;
+}
