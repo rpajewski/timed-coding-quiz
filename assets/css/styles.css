@@ -7,9 +7,30 @@ header {
     margin: 0 20px 0 20px;
 }
 
+.quiz-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .title {
+    display: flex;
+    flex: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     color: black;
+}
+
+.hide {
+    display: none;
+}
+
+#questions {
+    text-align: left;
+    color: black;
+    font-size: 18px;
+    font-style: bold;
 }
 
 .answer {
@@ -29,12 +50,11 @@ header {
     background-color: plum;
 }
 
-#button-answer {
-    display: flex;
-    justify-content: center;
+#question-answer {
+
 }
 
-.start-button {
+.btn {
     background-color: purple;
     display: flex;
     justify-content: center;
@@ -47,7 +67,8 @@ header {
     border-radius: 15px;
 }
 
-.start-button:hover {
+.btn:hover {
     background-color: plum;
     border-radius: 15px;
 }
+
