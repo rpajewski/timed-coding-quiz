@@ -10,6 +10,7 @@ header {
 .quiz-wrapper {
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .title {
@@ -26,27 +27,44 @@ header {
     display: none;
 }
 
+.question-choices {
+    display: flex;
+    flex: wrap;
+    flex-direction: column;
+    align-content: center;
+    margin: 25px 350px 0 450px;
+}
+
 #questions {
+    display: flex;
+    justify-content: left;
     text-align: left;
     color: black;
-    font-size: 18px;
+    font-size: 20px;
     font-style: bold;
 }
 
-.answer {
+#choices {
     display: flex;
-    justify-content: left;
+    flex-direction: column;
+    align-content: left;
+    margin-top: 15px;
+}
+
+.choices {
+    display: flex;
+    align-items: center;
     background-color: purple;
     color: white;
     border-radius: 15px;
     padding: 15px;
-    width: 150px;
+    width: 200px;
     height: 20px;
-    margin: 5px 0 5px 0;
+    margin: 2px 0 2px 0;
 
 }
 
-.answer:hover {
+.choices:hover {
     background-color: plum;
 }
 
