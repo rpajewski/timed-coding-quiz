@@ -84,12 +84,7 @@ var taskButtonHandler = function(event) {
     }
     // return to beginning handler
     else if (targetEl.matches('.return-button')) {
-        returnHome();
-    }
-
-    // view high scores handler
-    else if (targetEl.matches('.high-score-button')) {
-        highScoreButton();
+        window.location.href = "index.html";
     }
 };
 
@@ -145,7 +140,7 @@ function selectedAnswer() {
         answerEl.className = 'response';
         answerEl.textContent = 'Wrong!';
         // take away time for wrong answer
-        time -= 20;
+        time -= 10;
         if (time < 0) {
             time = 0;
         }
@@ -198,20 +193,6 @@ function userScore() {
     userScoreEl.appendChild(initialDivEl);
 };
 
-function returnHome() {
-    // hide try again or high score window
-    retryEl.setAttribute('class', 'hide');
-
-    // reset time and question index
-    time = questions.length * 15;
-    currentQuestion = 0
-    timerEl.textContent = time;
-
-    // unhide welcome screen
-    welcomePageEl.classList.remove('hide');
-    welcomePageEl.className = 'title';
-};
-
 function endQuiz() {
     // stop the timer
     clearInterval(timer);
@@ -237,6 +218,34 @@ function endQuiz() {
         goBackEl.className = 'btn return-button';
         youLoseEl.appendChild(goBackEl);
         retryEl.appendChild(youLoseEl);
+    }
+};
+
+function submitScore() {
+    // pull initials from usersInitialsEl
+    var initials = usersInitialsEl.value;
+  
+    // confirm box wasnt empty
+    if (initials === '') {
+        alert('Please Enter Your Initials')
+    }
+
+    else {
+        // get saved scores
+        var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+        // store new score as key and value
+        var newScore = {
+            score: time,
+            initials: initials
+        };
+  
+        // save score
+        highscores.push(newScore);
+        window.localStorage.setItem("highscores", JSON.stringify(highscores));
+  
+        // go to highscores.html
+        window.location.href = "highscores.html";
     }
 };
 
