@@ -29,7 +29,8 @@ var questions = [
     }
 ];
 
-var currentQuestion = 0
+var currentQuestion = 0;
+var time = 90;
 
 // assign a variables to DOM objects
 var titleEl = document.querySelector('#title');
@@ -37,6 +38,18 @@ var answerEl = document.querySelector('#question-answer');
 var questionEl = document.querySelector('#questions');
 var pageContentEl = document.querySelector('#page-content');
 var choicesEl = document.querySelector('#choices');
+var timerEl = document.querySelector('#time');
+
+// quiz timer function
+function quizTimer() {
+    setInterval(function() {
+    timerEl.innerHTML = time--;
+    }, 1000);
+    // if user runs out of time end quiz
+    if (time <= 0) {
+        endQuiz();
+    }
+};
 
 // challenge title and description
 var titlePage = function() {
@@ -83,7 +96,7 @@ var startQuiz = function() {
     welcomePageEl.setAttribute('class', 'hide');
 
     //start timer
-    // timerStart();
+    quizTimer();
 
     // get questions
     pullQuestion();
@@ -122,12 +135,12 @@ function selectedAnswer() {
         answerEl.className = 'response';
         answerEl.textContent = 'Wrong!';
         // take away time for wrong answer
-        // time -= 15;
-        // if (time < 0) {
-        //     time = 0;
-        // }
+        time -= 10;
+        if (time < 0) {
+            time = 0;
+        }
         // display updated time
-        // timerEl.textContent = time;      
+        timerEl.textContent = time;      
     }
 
     // display answer feedback for 1 sec
@@ -140,14 +153,14 @@ function selectedAnswer() {
 
     // verify there are questions remaining
     if (currentQuestion === questions.length) {
-        quizEnd();
+        endQuiz();
     }
     else {
         pullQuestion();
     }
 };
 
-// function quizEnd() {
+// function endQuiz() {
 
 // }
 
