@@ -32,10 +32,10 @@ var questions = [
 var currentQuestion = 0
 
 // assign a variables to DOM objects
-var titleEl = document.querySelector("#title");
+var titleEl = document.querySelector('#title');
 var answerEl = document.querySelector('#question-answer');
 var questionEl = document.querySelector('#questions');
-var pageContentEl = document.querySelector("#page-content");
+var pageContentEl = document.querySelector('#page-content');
 var choicesEl = document.querySelector('#choices');
 
 // challenge title and description
@@ -59,20 +59,20 @@ var titlePage = function() {
 var taskButtonHandler = function(event) {
     var targetEl = event.target;
     // start button handler
-    if (targetEl.matches(".start-button")) {
+    if (targetEl.matches('.start-button')) {
         startQuiz();
     }
     // submit button handler
-    else if (targetEl.matches(".submit-button")) {
+    else if (targetEl.matches('.submit-button')) {
         submitScore();
     }
     // return to beginning handler
-    else if (targetEl.matches(".return-button")) {
+    else if (targetEl.matches('.return-button')) {
         returnHome();
     }
 
     // view high scores handler
-    else if (targetEl.matches(".high-score-button")) {
+    else if (targetEl.matches('.high-score-button')) {
         highScoreButton();
     }
 };
@@ -97,16 +97,13 @@ function pullQuestion() {
     // reset choice buttons
     choicesEl.innerHTML = '';
 
-    // reset selected answer response
-    answerEl.innerHTML = '';
-
     // iterate through choices
     question.c.forEach(function(c, i) {
     // create buttons for each possible answer
-    var choiceBtn = document.createElement("button");
-    choiceBtn.setAttribute("class", "choices");
-    choiceBtn.setAttribute("value", c);
-    choiceBtn.textContent = i + 1 + ". " + c;
+    var choiceBtn = document.createElement('button');
+    choiceBtn.setAttribute('class', 'choices');
+    choiceBtn.setAttribute('value', c);
+    choiceBtn.textContent = i + 1 + '. ' + c;
     choicesEl.appendChild(choiceBtn);
     
     // event listener for selected answer
@@ -117,13 +114,26 @@ function pullQuestion() {
 function selectedAnswer() {
     // check answer
     if (this.value === questions[currentQuestion].a) {
-        answerEl.textContent = "Correct!";
+        answerEl.className = 'response';
+        answerEl.textContent = 'Correct!';
     }
 
     else {
-        answerEl.textContent = "Wrong!";
-        // penalize time   
+        answerEl.className = 'response';
+        answerEl.textContent = 'Wrong!';
+        // take away time for wrong answer
+        // time -= 15;
+        // if (time < 0) {
+        //     time = 0;
+        // }
+        // display updated time
+        // timerEl.textContent = time;      
     }
+
+    // display answer feedback for 1 sec
+    setTimeout(function() {
+        answerEl.setAttribute('class', 'hide');
+    }, 1000);
 
     // move to next question in array
     currentQuestion++;
@@ -137,6 +147,10 @@ function selectedAnswer() {
     }
 };
 
+// function quizEnd() {
+
+// }
+
 titlePage();
 
-pageContentEl.addEventListener("click", taskButtonHandler);
+pageContentEl.addEventListener('click', taskButtonHandler);

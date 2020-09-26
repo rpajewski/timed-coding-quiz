@@ -69,7 +69,15 @@ header {
 }
 
 #question-answer {
+    text-align: left;
+    margin-top: 20px;
+    padding-top: 10px;
+    font-style: italic;
+    font-size: 20px;
+}
 
+.response {
+    border-top: 3px solid grey;
 }
 
 .btn {
