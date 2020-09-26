@@ -40,6 +40,7 @@ var pageContentEl = document.querySelector('#page-content');
 var choicesEl = document.querySelector('#choices');
 var timerEl = document.querySelector('#time');
 var userScoreEl = document.querySelector('#user-score');
+var retryEl = document.querySelector('#try-again');
 
 // quiz timer function
 function quizTimer() {
@@ -144,7 +145,7 @@ function selectedAnswer() {
         answerEl.className = 'response';
         answerEl.textContent = 'Wrong!';
         // take away time for wrong answer
-        time -= 10;
+        time -= 20;
         if (time < 0) {
             time = 0;
         }
@@ -197,9 +198,25 @@ function userScore() {
     userScoreEl.appendChild(initialDivEl);
 };
 
+function returnHome() {
+    // hide try again or high score window
+    retryEl.setAttribute('class', 'hide');
+
+    // reset time and question index
+    time = questions.length * 15;
+    currentQuestion = 0
+    timerEl.textContent = time;
+
+    // unhide welcome screen
+    welcomePageEl.classList.remove('hide');
+    welcomePageEl.className = 'title';
+};
+
 function endQuiz() {
     // stop the timer
     clearInterval(timer);
+    timerEl.textContent = time;
+
     // hide questions, choices and answers
     questionEl.textContent = '';
     choicesEl.innerHTML = '';
@@ -209,12 +226,19 @@ function endQuiz() {
         userScore();
     }
     else {
+        // display try again screen and offer return to home page button
+        youLoseEl = document.createElement('div');
+        youLoseEl.className = 'loss-div'
         tryAgainEl = document.createElement('h3');
-        tryAgainEl.innerHTML = '<center>Please Try Again</center>';
-        userScoreEl.appendChild(tryAgainEl);
-        
+        tryAgainEl.textContent = 'Please Try Again';
+        youLoseEl.appendChild(tryAgainEl);
+        goBackEl = document.createElement('button');
+        goBackEl.textContent = 'Go Back';
+        goBackEl.className = 'btn return-button';
+        youLoseEl.appendChild(goBackEl);
+        retryEl.appendChild(youLoseEl);
     }
-}
+};
 
 titlePage();
 

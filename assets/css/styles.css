@@ -119,3 +119,8 @@ header {
 .submit-button {
     margin-top: 0px;
 }
+.loss-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
